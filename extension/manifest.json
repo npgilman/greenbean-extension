@@ -3,17 +3,11 @@
   "name": "ChatGPT Query Tracker",
   "version": "1.0",
   "description": "Track how many queries you have sent to ChatGPT in the current session.",
-  "permissions": ["storage"],
-  "host_permissions": ["https://chat.openai.com/*"],
+  "permissions": ["storage", "activeTab", "webRequest"],
+  "host_permissions": [ "*://chat.openai.com/*", "*://chatgpt.com/*" ],
   "background": {
     "service_worker": "background.js"
   },
-  "content_scripts": [
-    {
-      "matches": ["https://chat.openai.com/*"],
-      "js": ["content.js"]
-    }
-  ],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
