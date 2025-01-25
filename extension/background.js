@@ -1,4 +1,8 @@
+import { collection, updateDoc } from "firebase/firestore"; 
+import { db } from './firebase/firebaseConfig.js';
+
 let queryCount = 0;
+const userRef = doc(db, "users", "user1")
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.action === "getQueryCount") {
@@ -12,7 +16,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 });
 
-function incrementQueryCount() {
+async function incrementQueryCount() {
   chrome.storage.session.get("queryCount", (data) => {
       let queryCount = data.queryCount || 0;
       queryCount++;
@@ -20,6 +24,14 @@ function incrementQueryCount() {
           console.log("Query count updated to:", queryCount);
       });
   });
+  try {
+    await updateDoc(userRef, {
+      queries: queryCount
+    });
+    console.log("Document was updated: ", userRef.id);
+  } catch (e) {
+    console.error("Error updating document: ", e);
+  }
 }
 
 chrome.webRequest.onBeforeRequest.addListener(
