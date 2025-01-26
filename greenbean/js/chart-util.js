@@ -70,42 +70,53 @@ export default async function renderChart(userId) {
   });
 }
 
+// Object to store chart instances by userId
+const chartInstances = {};
 
 export async function renderSmallChart(userId, chartContainer) {
-    const ctx = chartContainer.getContext("2d");
-  
-    new Chart(ctx, {
-      type: "line",
-      data: await prepareChartData(userId),
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "top",
-          },
-          tooltip: {
-            callbacks: {
-              label: function (tooltipItem) {
-                return `Queries: ${tooltipItem.raw}`;
-              },
-            },
-          },
+  const ctx = chartContainer.getContext("2d");
+
+  // Destroy the previous chart if it exists
+  if (chartInstances[userId]) {
+    chartInstances[userId].destroy();  // Destroy the existing chart instance
+  }
+
+  // Create a new chart
+  const chart = new Chart(ctx, {
+    type: "line",
+    data: await prepareChartData(userId), // Assuming prepareChartData is a function that gets the data
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: "top",
         },
-        scales: {
-          x: {
-            title: {
-              display: true,
-              text: "Date",
+        tooltip: {
+          callbacks: {
+            label: function (tooltipItem) {
+              return `Queries: ${tooltipItem.raw}`;
             },
-          },
-          y: {
-            title: {
-              display: true,
-              text: "Number of Queries",
-            },
-            min: 0,
           },
         },
       },
-    });
-  }
+      scales: {
+        x: {
+          title: {
+            display: true,
+            text: "Date",
+          },
+        },
+        y: {
+          title: {
+            display: true,
+            text: "Number of Queries",
+          },
+          min: 0,
+        },
+      },
+    },
+  });
+
+  // Store the new chart instance
+  chartInstances[userId] = chart;
+}

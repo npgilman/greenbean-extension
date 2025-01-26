@@ -371,3 +371,15 @@ a {
 .tab-button:focus {
   outline: none;
 }
+
+.small-chart {
+  /* Styling the canvas chart */
+  width: 100%;
+  height: 300px; /* Set a fixed height for the chart */
+  padding: 30px;
+  margin-left: 10px;
+  display: none; /* Initially hidden */
+  background-color: #fff; /* Optional: Add background color for better visibility */
+  border: 1px solid #ccc; /* Optional: Add border for better separation */
+  border-radius: 5px; /* Rounded corners */
+}
