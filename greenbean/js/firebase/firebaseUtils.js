@@ -18,7 +18,7 @@ function generateRandomMap() {
     const date = new Date(today);
     date.setDate(today.getDate() - i);
     const dateString = date.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
-    map[dateString] = Math.floor(Math.random() * 20) + 1;
+    map[dateString] = Math.floor(Math.random() * 10) + 1;
   }
   return map;
 }
@@ -33,22 +33,31 @@ function seedDB() {
     const queryCounter = sumMapValues(queryDates);
     enrollUser(i, `${users[i]}@gmail.com`, users[i], queryDates, queryCounter);
   }
+
+  const devs = ["tvu", "michellevu", "c.annunziato", "ngilman"];
+  for (let d in devs) {
+    const queryDates = generateRandomMap();
+    const queryCounter = sumMapValues(queryDates);
+    enrollUser(100+d, `${devs[d]}@ufl.com`, devs[d], queryDates, queryCounter);
+  }
+
 }
 
-
+// seedDB();
 
 // export async function enrollUser(userId, email, name, queryDates, queryCounter) {
 //   await setDoc(doc(db, "users", email), {
 //     userName: name,
 //     dateJoined: new Date(),
 //     queryDates: queryDates,
-//     queryCounter:  queryCounter,
+//     queryCounter: queryCounter,
 //   });
 // }
+
 export async function enrollUser(userId, email, name) {
   await setDoc(doc(db, "users", email), {
     userName: name,
-    dateJoined: new Date().toISOString.split('T')[0],
+    dateJoined: new Date().toISOString().split('T')[0],
     queryDates: { [new Date().toLocaleDateString('en-GB')]: 0 },
     queryCounter: 0,
   });
