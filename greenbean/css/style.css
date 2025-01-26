@@ -6,7 +6,6 @@
 @import url("sections/hero.css");
 @import url("sections/stats.css");
 @import url("sections/cards.css");
-@import url("sections/footer.css");
 
 /* CSS variables for reusablity across all files (including above imported) */
 :root {
