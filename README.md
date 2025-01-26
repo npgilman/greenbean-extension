@@ -1,15 +1,25 @@
+## Greenbean Chrome Extension:
+
+### Table of Contents
+- [Purpose](#purpose)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
 
 
+### Purpose: 
+
+Bring awareness to the environmental impacts of generative AI queries.
 
 
-## {name} Chrome Extension:
 
 #### Features
-- Query tracking per user (tracking queries entered into gen ai models, environmental impact)
-- Visualizations showing/comparing your energy usage 
-- Leaderboard (global, custom)
+- Tracking ChatGPT queries per user through web extension
+- User login via Auth0
+- Visualizations tracking AI usage over time
+- Leaderboard comparing user energy consumption from ChatGPT queries
+
+#### Future Work
 - Appending "-ai" to google searches
-- LLM to determine if GenAI should be used for your prompt
 - Visualize environmental impact of AI companies
 - Differentiating between GenAI models used
 
@@ -17,8 +27,3 @@
 - Chrome Extension/Website: HTML, CSS, JS
 - Database: Firebase
 - Login: Auth0, Google
-
-
-
-
-
