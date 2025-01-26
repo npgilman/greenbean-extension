@@ -47,13 +47,15 @@ window.onload = async () => {
   }
   
   const user = await auth0client.getUser();
+  console.log(user);
   const queryShot = await getUserData(user.sub);
   if (queryShot.empty) {
-    await enrollUser(user.sub, user.given_name);
+    await enrollUser(user.sub, user.email, user.given_name);
   }
 
   await populateUserData(user.sub);
   await getLeaderboard();
+  await renderChart(user.sub);
 
 };
 
@@ -75,7 +77,6 @@ const populateUserData = async (userId) => {
   document.getElementById("total-mwh").innerText = mwhUsed;
 
   dispatchDBLoaded();
-  renderChart();
 }
 
 
