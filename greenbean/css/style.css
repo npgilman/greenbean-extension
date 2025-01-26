@@ -305,9 +305,20 @@ a {
   color: #333;
 }
 
+.carousel-text {
+  /* font-weight: bold; */
+  font-size: 20px;
+  color: #333;
+}
+
 .query-counter {
   font-size: 14px;
   color: #666;
+}
+
+.green-number {
+  font-weight: bold;
+  color: #4CAF50;
 }
 
 @media (max-width: 600px) {

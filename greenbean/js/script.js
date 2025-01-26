@@ -77,7 +77,7 @@ const populateUserData = async (userId) => {
 
   // carousel stats
   document.getElementById("numQueries").innerText = userData.queryCounter;
-  document.getElementById("numKwhs").innerText = userData.queryCounter * .0029;
+  document.getElementById("numKwhs").innerText = +(userData.queryCounter * 0.0029).toFixed(4);
   document.getElementById("numGoogles").innerText = userData.queryCounter * 9;
   document.getElementById("numBottles").innerText = userData.queryCounter * 3;
 
