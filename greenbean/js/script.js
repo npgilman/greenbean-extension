@@ -71,7 +71,7 @@ const populateUserData = async (userId) => {
 
   document.getElementById("greenbean-username").innerText = userData.userName;
   document.getElementById("greenbean-joindate").innerText = userData.dateJoined;
-  document.getElementById("greenbean-mwh").innerText = mwhUsed;
+  document.getElementById("greenbean-mwh").innerText = +(mwhUsed).toFixed(4);
   document.getElementById("total-queries").innerText = userData.queryCounter;
   document.getElementById("total-mwh").innerText = mwhUsed;
 
