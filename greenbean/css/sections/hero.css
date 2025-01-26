@@ -2,12 +2,14 @@
     display: flex;
     min-height: calc(100vh - 74px);
     overflow: hidden;
-}
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the section takes the full viewport height */
+  }
 
 .hero-image {
     flex: 1;
     display: flex;
-    flex-direction: column;
 
     position: relative;
     z-index: 5;
@@ -44,7 +46,6 @@
     flex: 1.22;
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
 }
 
 .hero-content-info {
@@ -52,11 +53,10 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    flex-direction: column;
 }
 
-.hero-content-info h1 {
-    font-size: 80px;
+.hero-content-info h1 { 
+    font-size: 30px;
     font-weight: 600px;
     font-family: var(--roboto);
     color: var(--secondary-color);

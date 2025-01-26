@@ -1,0 +1,17 @@
+.stats {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    max-width: 300px;
+    margin: 16px auto;
+    text-align: left;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+.stats p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #333;
+}
