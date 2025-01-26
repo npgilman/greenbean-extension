@@ -55,6 +55,7 @@
   .header-text {
     flex: 1;
     text-align: left;
+    position: relative;
   }
   
   .header-text h2 {
@@ -63,7 +64,7 @@
     font-family: var(--roboto);
     color: var(--secondary-color);
   }
-  
+
   .globe {
     flex: 1;
     text-align: right;
@@ -74,4 +75,8 @@
     display: inline-block;
     border-radius: 50%; /* Optional: Make it a circular frame */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+  }
+
+  #changing-text {
+    transition: opacity 1s ease-in-out; /* Add transition for opacity */
   }
