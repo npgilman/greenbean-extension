@@ -1,8 +1,11 @@
-import { getDataFromFirestore } from "./firebase/firebaseUtils.js";
+import { getUserData, enrollUser } from "./firebase/firebaseUtils.js";
 import { createAuth0Client } from "@auth0/auth0-spa-js";
 
 // add listeners
-const button = document.getElementById("order");
+document.getElementById("logout").addEventListener("click", () => {
+  auth0client.logout();
+  location.reload();
+});
 
 // other stuff
 let auth0client = null;
@@ -11,7 +14,7 @@ const fetchAuthConfig = () => fetch("/auth_config.json");
 const configureClient = async () => {
   const response = await fetchAuthConfig();
   const config = await response.json();
-  console.log("here");
+
   auth0client = await createAuth0Client({
     domain: config.domain,
     clientId: config.clientId,
@@ -19,42 +22,51 @@ const configureClient = async () => {
 };
 
 window.onload = async () => {
-    await configureClient();
-  
-    // Check if the user is authenticated first
-    const isAuthenticated = await auth0client.isAuthenticated();
-    console.log(isAuthenticated);
-  
-    // If the user is authenticated, show normal content
-    if (isAuthenticated) {
-      console.log("authenticated");
+  await configureClient();
+
+  // Check if the user is authenticated
+  const isAuthenticated = await auth0client.isAuthenticated();
+  console.log(isAuthenticated);
+
+  if (!isAuthenticated) {
+    const query = window.location.search;
+    if (query.includes("code=") && query.includes("state=")) {
+      await auth0client.handleRedirectCallback();
+      window.history.replaceState({}, document.title, "/");
     } else {
-      // If not authenticated, check if the page was redirected after login
-      const isRedirected = window.location.search.includes('code=') && window.location.search.includes('state=');
-      
-      if (!isRedirected) {
-        await auth0client.loginWithRedirect({
-          authorizationParams: {
-            redirect_uri: window.location.origin,
-          },
-        });
-      }
+      await auth0client.loginWithRedirect({
+        authorizationParams: {
+          redirect_uri: window.location.origin,
+        },
+      });
     }
-  };
+  }
   
+  const user = await auth0client.getUser();
+  const queryShot = await getUserData(user.sub);
+  if (queryShot.empty) {
+    await enrollUser(user.sub, user.given_name);
+  }
 
-const login = async () => {
-  console.log(window.location.origin);
-  
+  await populateUserData(user.sub);
 
-  // save token for use
-  let token = await auth0Client.getTokenSilently();
 };
 
-const logout = () => {
-  auth0Client.logout({
-    logoutParams: {
-      returnTo: window.location.origin,
-    },
-  });
-};
+const populateUserData = async (userId) => {
+  console.log(userId);
+  const queryShot = await getUserData(userId);
+  console.log(queryShot.docs);
+  if (queryShot.size !== 1) {
+    console.error("userId should be unique. returned results != 1.");
+  }
+  const userData = queryShot.docs[0].data();
+  const mwhUsed = userData.queryCounter * 0.0029;
+
+  document.getElementById("greenbean-username").innerText = userData.userName;
+  document.getElementById("greenbean-joindate").innerText = new Date(userData.dateJoined.seconds * 1000).toLocaleDateString();
+  document.getElementById("greenbean-mwh").innerText = mwhUsed;
+  document.getElementById("total-queries").innerText = userData.queryCounter;
+  document.getElementById("total-mwh").innerText = mwhUsed;
+
+}
+
