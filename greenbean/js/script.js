@@ -47,13 +47,12 @@ window.onload = async () => {
   }
   
   const user = await auth0client.getUser();
-  console.log(user);
-  const queryShot = await getUserData(user.sub);
+  const queryShot = await getUserData(user.email);
   if (queryShot.empty) {
     await enrollUser(user.sub, user.email, user.given_name);
   }
 
-  await populateUserData(user.sub);
+  await populateUserData(user.email);
   await getLeaderboard();
   await renderChart(user.sub);
 
@@ -75,6 +74,12 @@ const populateUserData = async (userId) => {
   document.getElementById("greenbean-mwh").innerText = mwhUsed;
   document.getElementById("total-queries").innerText = userData.queryCounter;
   document.getElementById("total-mwh").innerText = mwhUsed;
+
+  // carousel stats
+  document.getElementById("numQueries").innerText = userData.queryCounter;
+  document.getElementById("numKwhs").innerText = userData.queryCounter * .0029;
+  document.getElementById("numGoogles").innerText = userData.queryCounter * 9;
+  document.getElementById("numBottles").innerText = userData.queryCounter * 3;
 
   dispatchDBLoaded();
 }

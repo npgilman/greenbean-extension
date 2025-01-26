@@ -77,7 +77,7 @@
     <div class="globe-container">
       <div class="header-text">
         <h2>ChatGPT's annual energy consumption (227 million kWh) could power <span id="changing-text">Switzerland for a week</span></h2>
-        <p></p>
+        <button id="source-button" onclick="window.open('https://www.bestbrokers.com/forex-brokers/ais-power-demand-calculating-chatgpts-electricity-consumption-for-handling-over-78-billion-user-queries-every-year/', '_blank')">Learn more</button>
       </div>
       <div class="globe">
         <img src="assets/globe.gif" alt="Rotating Globe">
@@ -94,13 +94,35 @@
         <div class="right-half">
           <div class="carousel">
             <div class="carousel-item">
-              <p>9 Google searches</p>
+              <p><a href="https://example.com/source1" target="_blank">0.0029 kilowatt-hours of electricity</a></p>
             </div>
             <div class="carousel-item">
-              <p>0.5 years of video streaming</p>
+              <p><a href="https://www.rwdigital.ca/blog/how-much-energy-do-google-search-and-chatgpt-use/" target="_blank">9 Google searches</a></p>
             </div>
             <div class="carousel-item">
-              <p>energy statistic #3</p>
+              <p><a href="https://www.windowscentral.com/software-apps/openai-ceo-sam-altman-admitted-gpt-4-kind-of-sucks-and-now-we-learn-the-ai-model-consumes-up-to-3-water-bottles-to-generate-a-mere-100-words#:~:text=Did%20you%20know%20OpenAI%27s%20GPT%2D4%2C%20described%20as%20mildly%20embarrassing%20at%20best%2C%20consumes%20up%20to%203%20bottles%20of%20water%20to%20generate%20100%20words%3F%20This%20news%20is%20according%20to%20new%20research%20by%20the%20University%20of%20California%20first%20spotted%20by%20The%20Washington%20Post%20(via%20Tom%27s%20Hardware)." target="_blank">up to 3 bottles of water for a 100 word response (for cooling AI data centers)</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="split-card-section">
+      <div class="container2">
+        <div class="left-half">
+          <div class="left-card">
+            <p>For your <span id="numQueries"></span> queries over the past 30 days, thats: </p>
+          </div>
+        </div>
+        <div class="right-half">
+          <div class="carousel">
+            <div class="carousel-item">
+              <p><span id="numKwhs"></span> kilowatt-hours of electricity</p>
+            </div>
+            <div class="carousel-item">
+              <p><span id="numGoogles"></span> Google searches </p>
+            </div>
+            <div class="carousel-item">
+              <p><span id="numBottles"></span> bottles of water</p>
             </div>
           </div>
         </div>

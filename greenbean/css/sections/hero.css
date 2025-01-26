@@ -11,25 +11,30 @@
 
 .hero-container {
     width: 80%;
+    justify-content: center;
 }
 
 .hero-content {
   flex: 1.22;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .hero-content-info {
   height: 100px; /* Adjust this height as needed */
   overflow: hidden; /* Ensure content does not overflow */
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-content-info h1 {
   font-size: 30px;
   font-weight: 600;
   font-family: var(--roboto);
-  color: var(--secondary-color);
+  color: #fff;
   text-align: center;
+  margin: 20px 0;
+  line-height: 1.4;
 }
 
 .hero-content-info p {
@@ -80,3 +85,22 @@
   #changing-text {
     transition: opacity 1s ease-in-out; /* Add transition for opacity */
   }
+
+#source-button {
+  background-color: rgba(255, 255, 255, 0.2); /* White background with 50% opacity */
+  border: none; /* Remove border */
+  color: black; /* Black text */
+  padding: 10px 20px; /* Add some padding */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make the button inline-block */
+  font-size: 16px; /* Increase font size */
+  margin-top: 10px; /* Add some margin on top */
+  cursor: pointer; /* Change cursor to pointer */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+#source-button:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* White background with 80% opacity on hover */
+}
