@@ -3,15 +3,45 @@
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 16px;
-    max-width: 300px;
+    max-width: 90%;
     margin: 16px auto;
     text-align: left;
     font-family: Arial, sans-serif;
     line-height: 1.5;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    overflow: hidden;
 }
 
 .stats p {
     margin: 8px 0;
     font-size: 14px;
     color: #333;
+}
+  
+.tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f1f1f1;
+    border: none;
+    outline: none;
+}
+
+.tab-button.active {
+    background-color: #ccc;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
 }

@@ -48,9 +48,20 @@
               </div> -->
             </div>
           </div>
-          <div class="stats">
-            <p>Total Queries: </p>
-            <p>Total mwH: </p>
+          <div class="stats-wrapper">
+            <div class="stats">
+              <div class="tabs">
+                <button class="tab-button active" data-tab="stats">Stats</button>
+                <button class="tab-button" data-tab="leaderboard">Leaderboard</button>
+              </div>
+              <div class="tab-content active" id="stats">
+                <p>Total Queries: </p>
+                <p>Total mwH: </p>
+              </div>
+              <div class="tab-content" id="leaderboard">
+                <p>Leaderboard content goes here...</p>
+              </div>
+            </div>
           </div>
         </div>
       <!-- <div class="hero-content">
@@ -80,5 +91,6 @@
       </div> -->
     </section>
     <script type="module" src="js/app.js"></script>
+    <script src="js/tabs.js"></script>
   </body>
 </html>
