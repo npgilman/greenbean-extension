@@ -9,11 +9,20 @@
     h1 { font-size: 32px; color: #228b22;}
     p { font-size: 18px; color: #808a80;}
   </style>
-  <a href="https://www.flaticon.com/free-icons/energy" title="energy icons"></a>
 </head>
 <body>
   <h1>greenbean</h1>
-  <p>Query count (this session): <span id="query-count"></span></p>
+  <div id="signInSection">
+    <input type="email" id="email" placeholder="Enter your Gmail" required />
+    <button id="signInButton">Sign In</button>
+  </div>
+
+  <div id="signOutSection" style="display: none;">
+    <p>Query count (this session): <span id="query-count"></span></p>
+    <p>Signed in as: <span id="userEmailDisplay"></span></p>
+    <button id="signOutButton">Sign Out</button>
+  </div>
+
+  <script src="popup.js"></script>
 </body>
-<script src="popup.js"></script>
 </html>
