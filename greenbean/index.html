@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="assets/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Greenbean</title>
+  </head>
+  <body>
+    <header>
+      <nav class="header__nav">
+        <div class="header__logo">
+            <h4 data-aos="fade-down">
+              <img src="assets/icon.png" alt="Greenbean icon" style="width: 32px; height: 32px; vertical-align: middle; margin-bottom: 4px;">
+              Greenbean
+            </h4>
+          <div class="header__logo-overlay"></div>
+        </div>
+
+        <ul class="header__menu" data-aos="fade-down">
+          <li>
+            <a href="#learn-more">Learn More</a>
+          </li>
+          <li>
+            <a href="#logout" id="logout">logout</a>
+          </li>
+        </ul>
+
+        <ul class="header__menu-mobile" data-aos="fade-down">
+          <li>
+            <img src="assets/menu.svg" alt="menu" />
+          </li>
+        </ul>
+      </nav>
+    </header>
+    
+    
+    <section id="hide-controls" class="hero" style="display: none;">
+    <section class="hero">
+      <section class="hero">
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="hero-content-info">
+                <h1 id="animated-text">Welcome back, <div id="greenbean-username"></div>. Since <div id="greenbean-joindate"></div>, you've used <div id="greenbean-mwh"></div>mwH.</h1>
+                <p></p>
+              </div>
+            </div>
+            <div class="stats-wrapper">
+              <div class="stats">
+                <div class="tabs">
+                  <button class="tab-button active" data-tab="stats">Stats</button>
+                  <button class="tab-button" data-tab="leaderboard">Leaderboard</button>
+                </div>
+                <div class="tab-content active" id="stats">
+                  <li class="leaderboard-item">
+                    <div class="user-info">
+                      <span class="username">Total Queries</span>
+                      <span class="query-counter" id="total-queries"></span>
+                    </div>
+                  </li>
+                  <li class="leaderboard-item">
+                    <div class="user-info">
+                      <span class="username">Total mWH</span>
+                      <span class="query-counter" id="total-mwh"></span>
+                    </div>
+                  </li>
+                  <canvas id="lineChart" width="400" height="200"></canvas>
+                </div>
+                <div class="tab-content" id="leaderboard">
+                  <p>Leaderboard content goes here...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+        
+    <div class="globe-container">
+      <div class="header-text">
+        <h2>ChatGPT's annual energy consumption (227 million kWh) could power <span id="changing-text">Switzerland for a week</span></h2>
+        <button id="source-button" onclick="window.open('https://www.bestbrokers.com/forex-brokers/ais-power-demand-calculating-chatgpts-electricity-consumption-for-handling-over-78-billion-user-queries-every-year/', '_blank')">Learn more</button>
+      </div>
+      <div class="globe">
+        <img src="assets/globe.gif" alt="Rotating Globe">
+      </div>
+    </div>
+    
+    <div id="split-card-section">
+      <div class="container">
+        <div class="left-half">
+          <div class="left-card">
+            <p>1 ChatGPT-4 query consumes the same amount of energy as: </p>
+          </div>
+        </div>
+        <div class="right-half">
+          <div class="carousel">
+            <div class="carousel-item">
+              <p><a href="https://example.com/source1" target="_blank">0.0029 kilowatt-hours of electricity</a></p>
+            </div>
+            <div class="carousel-item">
+              <p><a href="https://www.rwdigital.ca/blog/how-much-energy-do-google-search-and-chatgpt-use/" target="_blank">9 Google searches</a></p>
+            </div>
+            <div class="carousel-item">
+              <p><a href="https://www.windowscentral.com/software-apps/openai-ceo-sam-altman-admitted-gpt-4-kind-of-sucks-and-now-we-learn-the-ai-model-consumes-up-to-3-water-bottles-to-generate-a-mere-100-words#:~:text=Did%20you%20know%20OpenAI%27s%20GPT%2D4%2C%20described%20as%20mildly%20embarrassing%20at%20best%2C%20consumes%20up%20to%203%20bottles%20of%20water%20to%20generate%20100%20words%3F%20This%20news%20is%20according%20to%20new%20research%20by%20the%20University%20of%20California%20first%20spotted%20by%20The%20Washington%20Post%20(via%20Tom%27s%20Hardware)." target="_blank">up to 3 bottles of water for a 100 word response (for cooling AI data centers)</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="split-card-section">
+      <div class="container2">
+        <div class="left-half">
+          <div class="left-card">
+            <p>For your <span id="numQueries"></span> queries over the past 30 days, thats: </p>
+          </div>
+        </div>
+        <div class="right-half">
+          <div class="carousel">
+            <div class="carousel-item">
+              <p><span id="numKwhs"></span> kilowatt-hours of electricity</p>
+            </div>
+            <div class="carousel-item">
+              <p><span id="numGoogles"></span> Google searches </p>
+            </div>
+            <div class="carousel-item">
+              <p><span id="numBottles"></span> bottles of water</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script type="module" src="js/script.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/typing.js"></script>
+    <script src="js/carousel.js"></script>
+  </body>
+</html>

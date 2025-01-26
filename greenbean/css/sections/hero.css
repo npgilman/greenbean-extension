@@ -1,0 +1,106 @@
+.hero {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  min-height: 100vh;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0%;
+  width: 100%
+}
+
+.hero-container {
+    width: 80%;
+    justify-content: center;
+}
+
+.hero-content {
+  flex: 1.22;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-content-info {
+  height: 100px; /* Adjust this height as needed */
+  overflow: hidden; /* Ensure content does not overflow */
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-content-info h1 {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: var(--roboto);
+  color: #fff;
+  text-align: center;
+  margin: 20px 0;
+  line-height: 1.4;
+}
+
+.hero-content-info p {
+  margin: 32px 0 0 32px;
+  font-family: var(--plus-jakarta-sans);
+  color: var(--secondary-color);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+
+
+.globe-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  
+  .header-text {
+    flex: 1;
+    text-align: left;
+    position: relative;
+  }
+  
+  .header-text h2 {
+    font-size: 24px;
+    font-weight: 600;
+    font-family: var(--roboto);
+    color: var(--secondary-color);
+  }
+
+  .globe {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .globe img {
+    max-width: 60%; /* Adjust the size of the GIF */
+    display: inline-block;
+    border-radius: 50%; /* Optional: Make it a circular frame */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+  }
+
+  #changing-text {
+    transition: opacity 1s ease-in-out; /* Add transition for opacity */
+  }
+
+#source-button {
+  background-color: rgba(255, 255, 255, 0.2); /* White background with 50% opacity */
+  border: none; /* Remove border */
+  color: black; /* Black text */
+  padding: 10px 20px; /* Add some padding */
+  text-align: center; /* Center the text */
+  text-decoration: none; /* Remove underline */
+  display: inline-block; /* Make the button inline-block */
+  font-size: 16px; /* Increase font size */
+  margin-top: 10px; /* Add some margin on top */
+  cursor: pointer; /* Change cursor to pointer */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+#source-button:hover {
+  background-color: rgba(255, 255, 255, 0.8); /* White background with 80% opacity on hover */
+}
