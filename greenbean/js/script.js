@@ -47,12 +47,12 @@ window.onload = async () => {
   }
   
   const user = await auth0client.getUser();
-  const queryShot = await getUserData(user.sub);
+  const queryShot = await getUserData(user.email);
   if (queryShot.empty) {
-    await enrollUser(user.sub, user.given_name);
+    await enrollUser(user.email, user.given_name);
   }
 
-  await populateUserData(user.sub);
+  await populateUserData(user.email);
   await getLeaderboard();
 
 };
