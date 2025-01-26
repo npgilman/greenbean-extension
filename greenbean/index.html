@@ -21,7 +21,7 @@
             <a href="#learn-more">Learn More</a>
           </li>
           <li>
-            <a href="#profile">Profile</a>
+            <a href="#logout" id="logout">logout</a>
           </li>
         </ul>
 
@@ -38,7 +38,7 @@
         <div class="hero-container">
           <div class="hero-content">
             <div class="hero-content-info">
-              <h1 id="animated-text">Welcome back, Nathan. Since last time, you've used 2,000,000mwH.</h1>
+              <h1 id="animated-text">Welcome back, <span id="greenbean-username"></span>. Since <span id="greenbean-joindate"></span>, you've used <span id="greenbean-mwh"></span>mwH.</h1>
               <p></p>
             </div>
           </div>
@@ -49,8 +49,8 @@
                 <button class="tab-button" data-tab="leaderboard">Leaderboard</button>
               </div>
               <div class="tab-content active" id="stats">
-                <p>Total Queries: </p>
-                <p>Total mwH: </p>
+                <p>Total Queries: <span id="total-queries"></span></p>
+                <p>Total mwH: <span id="total-mwh"></span></p>
               </div>
               <div class="tab-content" id="leaderboard">
                 <p>Leaderboard content goes here...</p>
