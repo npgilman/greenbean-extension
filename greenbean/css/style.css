@@ -317,3 +317,93 @@ a {
   }
 }
 /* END: trending media queries */
+
+
+#leaderboard {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard-item {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.leaderboard-item:hover {
+  background-color: #f0f8ff;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.username {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.query-counter {
+  font-size: 14px;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  .leaderboard-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .user-info {
+    align-items: flex-start;
+  }
+}
+
+/* Style for the tab buttons container */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between the buttons */
+  margin-bottom: 15px; /* Space between the buttons and content */
+}
+
+/* Common styling for the tab buttons */
+.tab-button {
+  padding: 10px 20px; /* Button padding */
+  font-size: 16px; /* Font size */
+  font-weight: bold; /* Bold text */
+  color: #555; /* Default text color */
+  background-color: #f0f0f0; /* Light gray background */
+  border: none;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Hover and click effects */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect */
+.tab-button:hover {
+  background-color: #e0e0e0; /* Slightly darker gray on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+/* Active tab button styling */
+.tab-button.active {
+  color: white; /* White text on active tab */
+  background-color: #4CAF50; /* Green background for active tab */
+  transform: scale(1.05); /* Slightly enlarge active button */
+}
+
+/* Remove the default focus outline */
+.tab-button:focus {
+  outline: none;
+}

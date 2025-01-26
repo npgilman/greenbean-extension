@@ -1,7 +1,11 @@
-import { getUserData, enrollUser } from "./firebase/firebaseUtils.js";
+import { getUserData, enrollUser, getLeaderboard } from "./firebase/firebaseUtils.js";
 import { createAuth0Client } from "@auth0/auth0-spa-js";
+import { dispatchDBLoaded, registerDBLoaded } from "./typing.js";
+import renderChart from "./chart-util.js";
+
 
 // add listeners
+registerDBLoaded();
 document.getElementById("logout").addEventListener("click", () => {
   auth0client.logout();
   location.reload();
@@ -49,6 +53,7 @@ window.onload = async () => {
   }
 
   await populateUserData(user.sub);
+  await getLeaderboard();
 
 };
 
@@ -61,6 +66,7 @@ const populateUserData = async (userId) => {
   }
   const userData = queryShot.docs[0].data();
   const mwhUsed = userData.queryCounter * 0.0029;
+  console.log(userData);
 
   document.getElementById("greenbean-username").innerText = userData.userName;
   document.getElementById("greenbean-joindate").innerText = new Date(userData.dateJoined.seconds * 1000).toLocaleDateString();
@@ -68,5 +74,17 @@ const populateUserData = async (userId) => {
   document.getElementById("total-queries").innerText = userData.queryCounter;
   document.getElementById("total-mwh").innerText = mwhUsed;
 
+  dispatchDBLoaded();
+  renderChart();
 }
 
+
+async function seedDB() {
+  const names = ["Alice", "Bob", "Charlie", "David", "Eve", "Frank"];
+  for (let i = 0; i < names.length; i++) {
+    await enrollUser(`${names[i]}@gmail.com`, names[i]);
+  }
+  await getLeaderboard();
+}
+
+// seedDB();
