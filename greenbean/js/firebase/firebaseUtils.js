@@ -48,8 +48,8 @@ function seedDB() {
 export async function enrollUser(userId, email, name) {
   await setDoc(doc(db, "users", email), {
     userName: name,
-    dateJoined: new Date(),
-    queryDates: { [new Date().toLocaleDateString('en-US')]: 0 },
+    dateJoined: new Date().toISOString.split('T')[0],
+    queryDates: { [new Date().toLocaleDateString('en-GB')]: 0 },
     queryCounter: 0,
   });
 }
@@ -136,7 +136,7 @@ export async function getUserQueryData(userId) {
     const result = [];
 
     // Loop through the last 30 days and fetch the query data
-    for (let i = 29; i >= 0; i--) {
+    for (let i = 1; i <= 30; i++) {
       const date = new Date(thirtyDaysAgo);
       date.setDate(thirtyDaysAgo.getDate() + i); // Increment the date by i days
       const formattedDate = formatDate(date);

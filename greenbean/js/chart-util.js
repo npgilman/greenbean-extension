@@ -16,7 +16,7 @@ async function prepareChartData(userId) {
     date.setDate(currentDate.getDate() - i); // Subtract i days from today
     last30Days.push(date.toISOString().split('T')[0]); // Push formatted date 'YYYY-MM-DD'
   }
-  
+console.log("last30Days", last30Days);
   return {
     labels: last30Days,
     datasets: [

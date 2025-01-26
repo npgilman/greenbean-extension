@@ -54,7 +54,7 @@ window.onload = async () => {
 
   await populateUserData(user.email);
   await getLeaderboard();
-  await renderChart(user.sub);
+  await renderChart(user.email);
 
 };
 
