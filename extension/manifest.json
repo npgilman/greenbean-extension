@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "ChatGPT Query Tracker",
-  "version": "1.0",
-  "description": "Track how many queries you have sent to ChatGPT in the current session.",
+  "name": "greenbean",
+  "version": "1.1",
+  "description": "Track the energy usage of your ChatGPT queries.",
   "permissions": ["storage", "activeTab", "webRequest"],
   "host_permissions": [ "*://chat.openai.com/*", "*://chatgpt.com/*", "https://www.gstatic.com/*", "https://swamphacks25.firebaseio.com/*" ],
   "background": {

@@ -34,17 +34,16 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 async function incrementQueryCount() {
   try {
-    // Fetch the document
     const docSnap = await getDoc(userRef);
 
     if (docSnap.exists()) {
       // If the document exists, retrieve and update the queryCount
-      const currentQueryCount = docSnap.data().queries || 0;
-      await updateDoc(userRef, { queries: currentQueryCount + 1 });
+      const currentQueryCount = docSnap.data().queryCounter || 0;
+      await updateDoc(userRef, { queryCounter: currentQueryCount + 1 });
       console.log("Query count (all-time) updated to:", currentQueryCount + 1);
     } else {
       // If the document doesn't exist, initialize it with queryCount = 1
-      await setDoc(userRef, { queries: 1 });
+      await setDoc(userRef, { queryCounter: 1 });
       console.log("Document created with initial query count: 1");
     }
   } catch (error) {
@@ -59,11 +58,40 @@ async function incrementQueryCount() {
   });
 }
 
+async function appendDateTime() {
+  try {
+    const docSnap = await getDoc(userRef);
+
+    const currentDateTime = new Date();
+    const formattedDateTime = currentDateTime.toISOString().slice(0, 19).replace("T", " ");
+
+    if (docSnap.exists()) {
+      // If the document exists, retrieve the current array of queryTimes
+      const currentQueryTimes = docSnap.data().queryTimes || [];
+      currentQueryTimes.push(formattedDateTime);
+
+      // Update document with new queryTimes array
+      await updateDoc(userRef, { queryTimes: currentQueryTimes });
+      console.log("Appended current date/time to queryTimes:", formattedDateTime);
+    } else {
+      // If the document doesn't exist, initialize queryTimes with the current date/time
+      await setDoc(userRef, { queryTimes: [formattedDateTime] });
+      console.log("Document created with initial queryTimes:", formattedDateTime);
+    }
+  } catch (error) {
+    console.error("Error updating Firestore document:", error);
+  }
+}
+
+
+
 chrome.webRequest.onBeforeRequest.addListener(
   function(details) {
     console.log("Request to OpenAI API detected:", details.url);
     incrementQueryCount();
     console.log("Sent request to increment");
+    appendDateTime();
+    console.log("Sent request to append time");
   },
   { urls: ["https://chatgpt.com/backend-api/lat/r"] },
   ["requestBody"]
