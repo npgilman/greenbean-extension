@@ -38,7 +38,7 @@ function seedDB() {
   for (let d in devs) {
     const queryDates = generateRandomMap();
     const queryCounter = sumMapValues(queryDates);
-    enrollUser(100+d, `${devs[d]}@ufl.com`, devs[d], queryDates, queryCounter);
+    enrollUser(100+d, `${devs[d]}@ufl.edu`, devs[d], queryDates, queryCounter);
   }
 
 }
@@ -48,7 +48,7 @@ function seedDB() {
 // export async function enrollUser(userId, email, name, queryDates, queryCounter) {
 //   await setDoc(doc(db, "users", email), {
 //     userName: name,
-//     dateJoined: new Date(),
+//     dateJoined: new Date().toISOString().split('T')[0], 
 //     queryDates: queryDates,
 //     queryCounter: queryCounter,
 //   });

@@ -70,7 +70,7 @@ const populateUserData = async (userId) => {
   console.log(userData);
 
   document.getElementById("greenbean-username").innerText = userData.userName;
-  document.getElementById("greenbean-joindate").innerText = new Date(userData.dateJoined.seconds * 1000).toLocaleDateString();
+  document.getElementById("greenbean-joindate").innerText = userData.dateJoined;
   document.getElementById("greenbean-mwh").innerText = mwhUsed;
   document.getElementById("total-queries").innerText = userData.queryCounter;
   document.getElementById("total-mwh").innerText = mwhUsed;
