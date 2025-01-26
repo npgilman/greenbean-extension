@@ -4,9 +4,10 @@
   "version": "1.0",
   "description": "Track how many queries you have sent to ChatGPT in the current session.",
   "permissions": ["storage", "activeTab", "webRequest"],
-  "host_permissions": [ "*://chat.openai.com/*", "*://chatgpt.com/*" ],
+  "host_permissions": [ "*://chat.openai.com/*", "*://chatgpt.com/*", "https://www.gstatic.com/*", "https://swamphacks25.firebaseio.com/*" ],
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "action": {
     "default_popup": "popup.html",
@@ -16,6 +17,10 @@
       "128": "icon.png"
     }
   },
+  "web_accessible_resources": [{
+    "resources": ["firebase-app.js", "firebase-firestore.js"],
+    "matches": ["<all_urls>"]
+  }],
   "icons": {
     "16": "icon.png",
     "48": "icon.png",
