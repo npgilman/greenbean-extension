@@ -1,73 +1,92 @@
 .hero {
-    display: flex;
-    min-height: 100vh;
-    overflow: hidden;
-    justify-content: center;
-    align-items: center;
-    padding-top: 0;
-    margin-top: -80px;
-  }
-
-.hero-image {
-    flex: 1;
-    display: flex;
-
-    position: relative;
-    z-index: 5;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  min-height: 100vh;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0%;
+  width: 100%
 }
 
-.hero-image img {
-    width: 120%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.hero-image__overlay {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-
-    background-color: var(--primary-color);
-    z-index: -1;
-}
-
-.hero-image h2 {
-    position: absolute;
-    bottom: 0;
-    padding: 20px;
-
-    font-family: var(--playfair-display);
-    font-weight: 700;
-    font-size: 120px;
-    line-height: 138px;
-    color: #fff;
+.hero-container {
+    width: 80%;
 }
 
 .hero-content {
-    flex: 1.22;
-    display: flex;
-    justify-content: space-between;
+  flex: 1.22;
+  display: flex;
+  justify-content: space-between;
 }
 
 .hero-content-info {
-    padding: 64px;
-    flex: 1;
-    display: flex;
-    justify-content: center;
+  height: 100px; /* Adjust this height as needed */
+  overflow: hidden; /* Ensure content does not overflow */
 }
 
-.hero-content-info h1 { 
-    font-size: 30px;
-    font-weight: 600px;
-    font-family: var(--roboto);
-    color: var(--secondary-color);
+.hero-content-info h1 {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: var(--roboto);
+  color: var(--secondary-color);
+  text-align: center;
 }
 
 .hero-content-info p {
-    margin: 32px 0 0 32px;
-
-    font-family: var(--plus-jakarta-sans);
-    color: var(--secondary-color);
-    font-size: 18px;
-    font-weight: 400;
+  margin: 32px 0 0 32px;
+  font-family: var(--plus-jakarta-sans);
+  color: var(--secondary-color);
+  font-size: 18px;
+  font-weight: 400;
 }
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: black; }
+}
+
+#animated-text {
+  display: inline-block;
+  overflow: hidden; /* Ensures the text is hidden until typed */
+  border-right: .15em solid black; /* Creates the caret effect */
+  white-space: nowrap; /* Prevents text from wrapping */
+  animation: typing 4s steps(40, end), blink-caret 0.5s step-end infinite;
+}
+
+.globe-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px 0;
+  }
+  
+  .header-text {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .header-text h2 {
+    font-size: 24px;
+    font-weight: 600;
+    font-family: var(--roboto);
+    color: var(--secondary-color);
+  }
+  
+  .globe {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .globe img {
+    max-width: 40%; /* Adjust the size of the GIF */
+    display: inline-block;
+    border-radius: 50%; /* Optional: Make it a circular frame */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a subtle shadow */
+  }
